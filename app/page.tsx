@@ -141,7 +141,7 @@ export default async function Home() {
             </div>
             <div className="flex-shrink-0 text-center">
               <FounderPhoto
-                imageSrc="https://placehold.co/150x150/2E2E2E/FAFAFA?text=Nabil"
+                imageSrc="/founders/nabil.jpeg"
                 alt="Nabil Shaikh"
                 linkedinUrl="https://www.linkedin.com/in/n4bi10p"
                 imageClassName="w-36 h-36 object-cover filter grayscale hover:grayscale-0"
