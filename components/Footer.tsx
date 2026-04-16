@@ -72,7 +72,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="#" className="hover:text-fair-brand">
-                  LinkedIn
+                  Linktree
                 </Link>
               </li>
             </ul>

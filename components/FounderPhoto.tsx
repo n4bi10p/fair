@@ -31,7 +31,7 @@ export default function FounderPhoto({ imageSrc, alt, linkedinUrl, imageClassNam
           rel="noopener noreferrer"
           className="text-white text-xs uppercase font-bold tracking-[0.05em]"
         >
-          LinkedIn
+          Linktree
         </a>
       </div>
 
@@ -41,7 +41,7 @@ export default function FounderPhoto({ imageSrc, alt, linkedinUrl, imageClassNam
         rel="noopener noreferrer"
         className="absolute inset-0 hidden md:group-hover:flex md:group-focus-within:flex items-center justify-center bg-fair-dark/70 text-white text-xs uppercase font-bold tracking-[0.05em]"
       >
-        LinkedIn
+        Linktree
       </a>
     </div>
   )

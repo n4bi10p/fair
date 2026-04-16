@@ -33,7 +33,7 @@ export default function PeoplePage() {
               <FounderPhoto
                 imageSrc="/founders/nabil.jpeg"
                 alt="Nabil Shaikh"
-                linkedinUrl="https://www.linkedin.com/in/n4bi10p"
+                linkedinUrl="https://linktr.ee/n4bi10p"
                 imageClassName="w-full object-cover filter grayscale hover:grayscale-0"
               />
               <p className="mt-4 font-bold">Nabil Shaikh</p>

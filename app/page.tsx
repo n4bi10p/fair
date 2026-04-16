@@ -143,7 +143,7 @@ export default async function Home() {
               <FounderPhoto
                 imageSrc="/founders/nabil.jpeg"
                 alt="Nabil Shaikh"
-                linkedinUrl="https://www.linkedin.com/in/n4bi10p"
+                linkedinUrl="https://linktr.ee/n4bi10p"
                 imageClassName="w-36 h-36 object-cover filter grayscale hover:grayscale-0"
               />
               <p className="mt-4 text-sm font-medium">Nabil Shaikh</p>
