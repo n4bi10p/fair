@@ -21,11 +21,11 @@ export default function Navbar() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-fair-background border-b border-fair-ghost">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
-        <div className="flex justify-between items-center py-4 md:py-6 gap-3">
+        <div className="relative flex justify-between items-center py-4 md:py-6 gap-3">
           <Link href="/" className="font-black text-xl md:text-2xl tracking-tighter text-fair-text shrink-0">
             FA\R
           </Link>
-          <nav className="flex-1 min-w-0 flex items-center gap-4 md:gap-8 overflow-x-auto whitespace-nowrap hide-scrollbar text-sm md:text-base">
+          <nav className="flex-1 min-w-0 flex items-center gap-4 md:gap-8 overflow-x-auto whitespace-nowrap hide-scrollbar text-sm md:text-base md:flex-none md:min-w-fit md:absolute md:left-1/2 md:-translate-x-1/2 md:overflow-visible">
             <Link href="/#about" className={aboutClass}>
               About
             </Link>

@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import FounderPhoto from '@/components/FounderPhoto'
 import { getLatestPublishedBlogPosts, getLatestPublishedEvents } from '@/lib/content'
 import { formatDateShort } from '@/lib/utils'
 
@@ -130,31 +131,21 @@ export default async function Home() {
           </div>
           <div className="flex justify-center gap-8">
             <div className="flex-shrink-0 text-center">
-              <div className="relative group">
-                <img src="https://placehold.co/150x150/2E2E2E/FAFAFA?text=Talib" alt="Talib Sayyed" className="w-36 h-36 object-cover filter grayscale hover:grayscale-0" />
-                <a
-                  href="https://www.linkedin.com/in/talibs"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="absolute inset-0 hidden group-hover:flex items-center justify-center bg-fair-dark/70 text-white text-xs uppercase font-bold tracking-[0.05em]"
-                >
-                  LinkedIn
-                </a>
-              </div>
+              <FounderPhoto
+                imageSrc="https://placehold.co/150x150/2E2E2E/FAFAFA?text=Talib"
+                alt="Talib Sayyed"
+                linkedinUrl="https://www.linkedin.com/in/talibs"
+                imageClassName="w-36 h-36 object-cover filter grayscale hover:grayscale-0"
+              />
               <p className="mt-4 text-sm font-medium">Talib Sayyed</p>
             </div>
             <div className="flex-shrink-0 text-center">
-              <div className="relative group">
-                <img src="https://placehold.co/150x150/2E2E2E/FAFAFA?text=Nabil" alt="Nabil Shaikh" className="w-36 h-36 object-cover filter grayscale hover:grayscale-0" />
-                <a
-                  href="https://www.linkedin.com/in/n4bi10p"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="absolute inset-0 hidden group-hover:flex items-center justify-center bg-fair-dark/70 text-white text-xs uppercase font-bold tracking-[0.05em]"
-                >
-                  LinkedIn
-                </a>
-              </div>
+              <FounderPhoto
+                imageSrc="https://placehold.co/150x150/2E2E2E/FAFAFA?text=Nabil"
+                alt="Nabil Shaikh"
+                linkedinUrl="https://www.linkedin.com/in/n4bi10p"
+                imageClassName="w-36 h-36 object-cover filter grayscale hover:grayscale-0"
+              />
               <p className="mt-4 text-sm font-medium">Nabil Shaikh</p>
             </div>
           </div>

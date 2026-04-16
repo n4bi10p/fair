@@ -1,3 +1,5 @@
+import FounderPhoto from '@/components/FounderPhoto'
+
 export default function PeoplePage() {
   return (
     <>
@@ -18,32 +20,22 @@ export default function PeoplePage() {
           </div>
           <div className="grid md:grid-cols-2 gap-8 max-w-3xl">
             <div className="text-center">
-              <div className="relative group">
-                <img src="https://placehold.co/300x300/2E2E2E/FAFAFA?text=Talib" alt="Talib Sayyed" className="w-full object-cover filter grayscale hover:grayscale-0" />
-                <a
-                  href="https://www.linkedin.com/in/talibs"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="absolute inset-0 hidden group-hover:flex items-center justify-center bg-fair-dark/70 text-white text-xs uppercase font-bold tracking-[0.05em]"
-                >
-                  LinkedIn
-                </a>
-              </div>
+              <FounderPhoto
+                imageSrc="https://placehold.co/300x300/2E2E2E/FAFAFA?text=Talib"
+                alt="Talib Sayyed"
+                linkedinUrl="https://www.linkedin.com/in/talibs"
+                imageClassName="w-full object-cover filter grayscale hover:grayscale-0"
+              />
               <p className="mt-4 font-bold">Talib Sayyed</p>
               <p className="text-sm text-fair-text/70">Founder</p>
             </div>
             <div className="text-center">
-              <div className="relative group">
-                <img src="https://placehold.co/300x300/2E2E2E/FAFAFA?text=Nabil" alt="Nabil Shaikh" className="w-full object-cover filter grayscale hover:grayscale-0" />
-                <a
-                  href="https://www.linkedin.com/in/n4bi10p"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="absolute inset-0 hidden group-hover:flex items-center justify-center bg-fair-dark/70 text-white text-xs uppercase font-bold tracking-[0.05em]"
-                >
-                  LinkedIn
-                </a>
-              </div>
+              <FounderPhoto
+                imageSrc="https://placehold.co/300x300/2E2E2E/FAFAFA?text=Nabil"
+                alt="Nabil Shaikh"
+                linkedinUrl="https://www.linkedin.com/in/n4bi10p"
+                imageClassName="w-full object-cover filter grayscale hover:grayscale-0"
+              />
               <p className="mt-4 font-bold">Nabil Shaikh</p>
               <p className="text-sm text-fair-text/70">Co Founder</p>
             </div>
@@ -58,8 +50,32 @@ export default function PeoplePage() {
             <h2 className="text-3xl md:text-4xl font-black tracking-tighter mt-2">2 builders & researchers</h2>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-            <img src="https://placehold.co/100x100/2E2E2E/FAFAFA?text=Talib" alt="Talib Sayyed" className="w-full h-auto object-cover filter grayscale hover:grayscale-0" />
-            <img src="https://placehold.co/100x100/2E2E2E/FAFAFA?text=Nabil" alt="Nabil Shaikh" className="w-full h-auto object-cover filter grayscale hover:grayscale-0" />
+            <a
+              href="https://www.linkedin.com/in/talibs"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Talib Sayyed on LinkedIn"
+              className="block"
+            >
+              <img
+                src="https://placehold.co/100x100/2E2E2E/FAFAFA?text=Talib"
+                alt="Talib Sayyed"
+                className="w-full h-auto object-cover filter grayscale hover:grayscale-0"
+              />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/n4bi10p"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Nabil Shaikh on LinkedIn"
+              className="block"
+            >
+              <img
+                src="https://placehold.co/100x100/2E2E2E/FAFAFA?text=Nabil"
+                alt="Nabil Shaikh"
+                className="w-full h-auto object-cover filter grayscale hover:grayscale-0"
+              />
+            </a>
             <a href="/apply" className="w-full h-full bg-fair-brand flex flex-col items-center justify-center text-white text-center min-h-[80px]">
               <span className="text-2xl font-black">+</span>
               <span className="font-black text-xl">YOU?</span>

@@ -4,10 +4,10 @@ export default function Footer() {
   return (
     <footer className="bg-fair-surface text-fair-text py-12 md:py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-8">
-          <div className="md:col-span-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-8 md:justify-items-center md:text-center">
+          <div className="md:col-span-6 md:max-w-xl md:mx-auto">
             <div className="font-black text-3xl tracking-tighter text-fair-text">FA\R</div>
-            <p className="mt-4 max-w-md" style={{ lineHeight: 1.8 }}>
+            <p className="mt-4 max-w-md md:mx-auto" style={{ lineHeight: 1.8 }}>
               Folks in AI and Research. A community driven by curiosity and the drive to build the future of intelligence.
             </p>
             <p className="mt-4 text-sm text-fair-text/70">Pune, India</p>
@@ -78,7 +78,7 @@ export default function Footer() {
             </ul>
           </div>
         </div>
-        <div className="mt-12 md:mt-20 pt-8 border-t border-fair-ghost/30 text-sm text-fair-text/70 flex flex-col gap-2 md:flex-row md:justify-between">
+        <div className="mt-12 md:mt-20 pt-8 border-t border-fair-ghost/30 text-sm text-fair-text/70 flex flex-col items-center text-center gap-2">
           <p>© 2025 FAIR Community. All rights reserved.</p>
         </div>
       </div>
