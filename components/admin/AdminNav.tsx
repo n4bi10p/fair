@@ -24,17 +24,17 @@ export default function AdminNav() {
     <header className="border-b border-fair-ghost bg-fair-background sticky top-0 z-30">
       <div className="max-w-[1440px] mx-auto px-8 py-4 flex items-center justify-between">
         <div className="flex items-center gap-8">
-          <Link href="/admin" className="text-2xl font-black tracking-tighter text-fair-text">
+          <Link href="/vault" className="text-2xl font-black tracking-tighter text-fair-text">
             FA\R
           </Link>
           <nav className="flex items-center gap-2">
-            <Link href="/admin" className={`${baseItemClass} ${isActive('/admin') && pathname === '/admin' ? 'bg-fair-dark text-white' : 'text-fair-text hover:bg-fair-dark hover:text-white'}`}>
+            <Link href="/vault" className={`${baseItemClass} ${isActive('/vault') && pathname === '/vault' ? 'bg-fair-dark text-white' : 'text-fair-text hover:bg-fair-dark hover:text-white'}`}>
               Dashboard
             </Link>
-            <Link href="/admin/events" className={`${baseItemClass} ${isActive('/admin/events') ? 'bg-fair-dark text-white' : 'text-fair-text hover:bg-fair-dark hover:text-white'}`}>
+            <Link href="/vault/events" className={`${baseItemClass} ${isActive('/vault/events') ? 'bg-fair-dark text-white' : 'text-fair-text hover:bg-fair-dark hover:text-white'}`}>
               Events
             </Link>
-            <Link href="/admin/blog" className={`${baseItemClass} ${isActive('/admin/blog') ? 'bg-fair-dark text-white' : 'text-fair-text hover:bg-fair-dark hover:text-white'}`}>
+            <Link href="/vault/blog" className={`${baseItemClass} ${isActive('/vault/blog') ? 'bg-fair-dark text-white' : 'text-fair-text hover:bg-fair-dark hover:text-white'}`}>
               Blog
             </Link>
           </nav>

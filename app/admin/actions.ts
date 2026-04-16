@@ -41,9 +41,11 @@ export async function createEventAction(formData: FormData) {
 
   revalidatePath('/admin')
   revalidatePath('/admin/events')
+  revalidatePath('/vault')
+  revalidatePath('/vault/events')
   revalidatePath('/events')
   revalidatePath('/')
-  redirect('/admin/events')
+  redirect('/vault/events')
 }
 
 export async function updateEventAction(formData: FormData) {
@@ -71,9 +73,11 @@ export async function updateEventAction(formData: FormData) {
 
   revalidatePath('/admin')
   revalidatePath('/admin/events')
+  revalidatePath('/vault')
+  revalidatePath('/vault/events')
   revalidatePath('/events')
   revalidatePath('/')
-  redirect('/admin/events')
+  redirect('/vault/events')
 }
 
 export async function deleteEventAction(formData: FormData) {
@@ -84,6 +88,8 @@ export async function deleteEventAction(formData: FormData) {
 
   revalidatePath('/admin')
   revalidatePath('/admin/events')
+  revalidatePath('/vault')
+  revalidatePath('/vault/events')
   revalidatePath('/events')
   revalidatePath('/')
 }
@@ -112,9 +118,11 @@ export async function createPostAction(formData: FormData) {
 
   revalidatePath('/admin')
   revalidatePath('/admin/blog')
+  revalidatePath('/vault')
+  revalidatePath('/vault/blog')
   revalidatePath('/blog')
   revalidatePath('/')
-  redirect('/admin/blog')
+  redirect('/vault/blog')
 }
 
 export async function updatePostAction(formData: FormData) {
@@ -142,9 +150,11 @@ export async function updatePostAction(formData: FormData) {
 
   revalidatePath('/admin')
   revalidatePath('/admin/blog')
+  revalidatePath('/vault')
+  revalidatePath('/vault/blog')
   revalidatePath('/blog')
   revalidatePath('/')
-  redirect('/admin/blog')
+  redirect('/vault/blog')
 }
 
 export async function deletePostAction(formData: FormData) {
@@ -155,6 +165,8 @@ export async function deletePostAction(formData: FormData) {
 
   revalidatePath('/admin')
   revalidatePath('/admin/blog')
+  revalidatePath('/vault')
+  revalidatePath('/vault/blog')
   revalidatePath('/blog')
   revalidatePath('/')
 }

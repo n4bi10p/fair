@@ -11,7 +11,7 @@ type SiteChromeProps = {
 
 export default function SiteChrome({ children }: SiteChromeProps) {
   const pathname = usePathname()
-  const hideChrome = pathname.startsWith('/admin') || pathname === '/vault'
+  const hideChrome = pathname.startsWith('/admin') || pathname.startsWith('/vault')
 
   return (
     <>

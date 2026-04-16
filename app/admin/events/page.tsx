@@ -17,7 +17,7 @@ export default async function AdminEventsPage() {
     <div>
       <div className="flex items-center justify-between mb-8">
         <h1 className="text-4xl font-black tracking-tighter">Events</h1>
-        <Link href="/admin/events/new" className="bg-fair-brand text-white uppercase font-bold text-xs px-4 py-3 hover:bg-fair-dark transition-none">
+        <Link href="/vault/events/new" className="bg-fair-brand text-white uppercase font-bold text-xs px-4 py-3 hover:bg-fair-dark transition-none">
           New Event
         </Link>
       </div>
@@ -37,7 +37,7 @@ export default async function AdminEventsPage() {
             </div>
 
             <div className="flex items-center gap-2">
-              <Link href={`/admin/events/${event.id}`} className="px-3 py-2 text-xs uppercase font-bold border border-fair-text hover:bg-fair-surface transition-none">
+              <Link href={`/vault/events/${event.id}`} className="px-3 py-2 text-xs uppercase font-bold border border-fair-text hover:bg-fair-surface transition-none">
                 Edit
               </Link>
               <form action={deleteEventAction}>

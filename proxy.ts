@@ -4,6 +4,13 @@ import { NextResponse, type NextRequest } from 'next/server'
 import { getSupabaseEnv } from '@/lib/supabase/config'
 
 export async function proxy(request: NextRequest) {
+  const pathname = request.nextUrl.pathname
+
+  // Block direct /admin access by sending users to the home page.
+  if (pathname.startsWith('/admin')) {
+    return NextResponse.redirect(new URL('/', request.url))
+  }
+
   let response = NextResponse.next({
     request: {
       headers: request.headers,
@@ -13,7 +20,7 @@ export async function proxy(request: NextRequest) {
   const { isConfigured, url, anonKey } = getSupabaseEnv()
 
   if (!isConfigured) {
-    if (request.nextUrl.pathname.startsWith('/admin')) {
+    if (pathname.startsWith('/vault') && pathname !== '/vault') {
       return NextResponse.redirect(new URL('/vault', request.url))
     }
     return response
@@ -69,14 +76,16 @@ export async function proxy(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser()
 
-  // if user is not signed in and the current path is under /admin, redirect to hidden vault login
-  if (!user && request.nextUrl.pathname.startsWith('/admin')) {
+  // Unauthenticated users can only access the /vault login entrypoint.
+  if (!user && pathname.startsWith('/vault') && pathname !== '/vault') {
     return NextResponse.redirect(new URL('/vault', request.url))
   }
 
-  // if user is signed in and they hit /vault, send them to /admin
-  if (user && request.nextUrl.pathname === '/vault') {
-    return NextResponse.redirect(new URL('/admin', request.url))
+  // Authenticated /vault URLs serve admin pages while keeping /vault in the address bar.
+  if (user && pathname.startsWith('/vault')) {
+    const suffix = pathname.slice('/vault'.length)
+    const target = suffix ? `/admin${suffix}` : '/admin'
+    return NextResponse.rewrite(new URL(target, request.url))
   }
 
 
@@ -84,5 +93,5 @@ export async function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/admin/:path*', '/vault'],
+  matcher: ['/admin/:path*', '/vault/:path*'],
 }

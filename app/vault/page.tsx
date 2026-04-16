@@ -33,7 +33,7 @@ export default function VaultLoginPage() {
       return
     }
 
-    router.push('/admin')
+    router.push('/vault')
   }
 
   return (

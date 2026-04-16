@@ -28,10 +28,10 @@ export default async function AdminDashboardPage() {
           <p className="mt-2 text-fair-text/70">Manage FAIR events and posts.</p>
         </div>
         <div className="flex gap-3">
-          <Link href="/admin/events/new" className="bg-fair-brand text-white uppercase font-bold text-xs px-4 py-3 hover:bg-fair-dark transition-none">
+          <Link href="/vault/events/new" className="bg-fair-brand text-white uppercase font-bold text-xs px-4 py-3 hover:bg-fair-dark transition-none">
             New Event
           </Link>
-          <Link href="/admin/blog/new" className="bg-fair-brand text-white uppercase font-bold text-xs px-4 py-3 hover:bg-fair-dark transition-none">
+          <Link href="/vault/blog/new" className="bg-fair-brand text-white uppercase font-bold text-xs px-4 py-3 hover:bg-fair-dark transition-none">
             New Post
           </Link>
         </div>
@@ -60,7 +60,7 @@ export default async function AdminDashboardPage() {
         <div>
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-2xl font-black tracking-tighter">Recent Events</h2>
-            <Link href="/admin/events" className="text-sm font-bold uppercase hover:text-fair-brand">View All</Link>
+            <Link href="/vault/events" className="text-sm font-bold uppercase hover:text-fair-brand">View All</Link>
           </div>
           <div className="border border-fair-ghost">
             {(recentEvents ?? []).map((event) => (
@@ -72,7 +72,7 @@ export default async function AdminDashboardPage() {
                   </p>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Link href={`/admin/events/${event.id}`} className="px-3 py-2 text-xs uppercase font-bold border border-fair-text hover:bg-fair-surface transition-none">
+                  <Link href={`/vault/events/${event.id}`} className="px-3 py-2 text-xs uppercase font-bold border border-fair-text hover:bg-fair-surface transition-none">
                     Edit
                   </Link>
                   <form action={deleteEventAction}>
@@ -90,7 +90,7 @@ export default async function AdminDashboardPage() {
         <div>
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-2xl font-black tracking-tighter">Recent Posts</h2>
-            <Link href="/admin/blog" className="text-sm font-bold uppercase hover:text-fair-brand">View All</Link>
+            <Link href="/vault/blog" className="text-sm font-bold uppercase hover:text-fair-brand">View All</Link>
           </div>
           <div className="border border-fair-ghost">
             {(recentPosts ?? []).map((post) => (
@@ -102,7 +102,7 @@ export default async function AdminDashboardPage() {
                   </p>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Link href={`/admin/blog/${post.id}`} className="px-3 py-2 text-xs uppercase font-bold border border-fair-text hover:bg-fair-surface transition-none">
+                  <Link href={`/vault/blog/${post.id}`} className="px-3 py-2 text-xs uppercase font-bold border border-fair-text hover:bg-fair-surface transition-none">
                     Edit
                   </Link>
                   <form action={deletePostAction}>
