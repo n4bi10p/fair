@@ -1,6 +1,8 @@
 import { createServerClient, type CookieOptions } from '@supabase/ssr'
 import { NextResponse, type NextRequest } from 'next/server'
 
+import { getSupabaseEnv } from '@/lib/supabase/config'
+
 export async function proxy(request: NextRequest) {
   let response = NextResponse.next({
     request: {
@@ -8,9 +10,18 @@ export async function proxy(request: NextRequest) {
     },
   })
 
+  const { isConfigured, url, anonKey } = getSupabaseEnv()
+
+  if (!isConfigured) {
+    if (request.nextUrl.pathname.startsWith('/admin')) {
+      return NextResponse.redirect(new URL('/vault', request.url))
+    }
+    return response
+  }
+
   const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    url,
+    anonKey,
     {
       cookies: {
         get(name: string) {
@@ -58,13 +69,13 @@ export async function proxy(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser()
 
-  // if user is not signed in and the current path is not /admin/login, redirect the user to /admin/login
-  if (!user && request.nextUrl.pathname.startsWith('/admin') && request.nextUrl.pathname !== '/admin/login') {
-    return NextResponse.redirect(new URL('/admin/login', request.url))
+  // if user is not signed in and the current path is under /admin, redirect to hidden vault login
+  if (!user && request.nextUrl.pathname.startsWith('/admin')) {
+    return NextResponse.redirect(new URL('/vault', request.url))
   }
 
-  // if user is signed in and the current path is /admin/login, redirect the user to /admin
-  if (user && request.nextUrl.pathname === '/admin/login') {
+  // if user is signed in and they hit /vault, send them to /admin
+  if (user && request.nextUrl.pathname === '/vault') {
     return NextResponse.redirect(new URL('/admin', request.url))
   }
 
@@ -73,5 +84,5 @@ export async function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/admin/:path*'],
+  matcher: ['/admin/:path*', '/vault'],
 }

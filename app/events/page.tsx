@@ -1,4 +1,15 @@
-export default function EventsPage() {
+import Link from 'next/link'
+
+import { getPublishedEvents } from '@/lib/content'
+import { formatDateLong, formatDateShort, isFutureOrToday } from '@/lib/utils'
+
+export const dynamic = 'force-dynamic'
+
+export default async function EventsPage() {
+  const events = await getPublishedEvents()
+  const upcomingEvents = events.filter((event) => isFutureOrToday(event.event_date))
+  const pastEvents = events.filter((event) => !isFutureOrToday(event.event_date)).reverse()
+
   return (
     <>
       <section className="py-24">
@@ -17,30 +28,28 @@ export default function EventsPage() {
       <section className="pb-24">
         <div className="max-w-7xl mx-auto px-12">
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-fair-surface p-8 flex flex-col justify-between hover:bg-fair-brand hover:text-white group min-h-[280px]">
-              <div>
-                <p className="text-sm uppercase font-bold tracking-wider text-fair-text/60 group-hover:text-white/80">JUL 20</p>
-                <h3 className="mt-4 text-3xl font-bold tracking-tighter">Advanced Prompt Engineering</h3>
-                <p className="mt-2 text-fair-text/60 group-hover:text-white/80">Moving beyond basic prompts to structured, multi-step agentic workflows.</p>
+            {upcomingEvents.slice(0, 6).map((event) => (
+              <div key={event.id} className="bg-fair-surface p-8 flex flex-col justify-between hover:bg-fair-brand hover:text-white group min-h-[280px]">
+                <div>
+                  <p className="text-sm uppercase font-bold tracking-wider text-fair-text/60 group-hover:text-white/80">{formatDateShort(event.event_date)}</p>
+                  <h3 className="mt-4 text-3xl font-bold tracking-tighter">{event.title}</h3>
+                  {event.description ? (
+                    <p className="mt-2 text-fair-text/60 group-hover:text-white/80">{event.description}</p>
+                  ) : null}
+                </div>
+                {event.is_sold_out ? (
+                  <p className="mt-8 text-sm uppercase font-bold tracking-wider self-start text-[#8A5A44]">Sold Out</p>
+                ) : event.rsvp_link ? (
+                  <a href={event.rsvp_link} target="_blank" rel="noreferrer" className="mt-8 text-sm uppercase font-bold tracking-wider self-start">
+                    RSVP →
+                  </a>
+                ) : (
+                  <Link href={`/events/${event.slug}`} className="mt-8 text-sm uppercase font-bold tracking-wider self-start">
+                    View Details →
+                  </Link>
+                )}
               </div>
-              <a href="#" className="mt-8 text-sm uppercase font-bold tracking-wider self-start">RSVP →</a>
-            </div>
-            <div className="bg-fair-surface p-8 flex flex-col justify-between hover:bg-fair-brand hover:text-white group min-h-[280px]">
-              <div>
-                <p className="text-sm uppercase font-bold tracking-wider text-fair-text/60 group-hover:text-white/80">AUG 02</p>
-                <h3 className="mt-4 text-3xl font-bold tracking-tighter">Intro to Julia</h3>
-                <p className="mt-2 text-fair-text/60 group-hover:text-white/80">A hands-on workshop for Python developers new to the Julia language.</p>
-              </div>
-              <a href="#" className="mt-8 text-sm uppercase font-bold tracking-wider self-start">RSVP →</a>
-            </div>
-            <div className="bg-fair-surface p-8 flex flex-col justify-between min-h-[280px]">
-              <div>
-                <p className="text-sm uppercase font-bold tracking-wider text-fair-text/60">JUN 11</p>
-                <h3 className="mt-4 text-3xl font-bold tracking-tighter">Finetuning LLMs on a Budget</h3>
-                <p className="mt-2 text-fair-text/60">Techniques for QLoRA and parameter-efficient finetuning on consumer GPUs.</p>
-              </div>
-              <p className="mt-8 text-sm uppercase font-bold tracking-wider self-start text-[#8A5A44]">SOLD OUT</p>
-            </div>
+            ))}
           </div>
         </div>
       </section>
@@ -49,27 +58,15 @@ export default function EventsPage() {
         <div className="max-w-7xl mx-auto px-12">
           <h2 className="text-4xl font-black tracking-tighter mb-12">From the Archive</h2>
           <div className="space-y-4">
-            <div className="flex items-center justify-between py-6 border-b border-fair-ghost/50">
-              <div className="flex items-center">
-                <span className="bg-fair-brand text-white uppercase font-bold text-xs px-3 py-1 mr-6">WORKSHOP</span>
-                <h3 className="text-xl font-bold tracking-tighter">Diffusion Model Workshop</h3>
+            {pastEvents.slice(0, 8).map((event) => (
+              <div key={event.id} className="flex items-center justify-between py-6 border-b border-fair-ghost/50">
+                <div className="flex items-center">
+                  <span className="bg-fair-brand text-white uppercase font-bold text-xs px-3 py-1 mr-6">{event.format ?? 'EVENT'}</span>
+                  <h3 className="text-xl font-bold tracking-tighter">{event.title}</h3>
+                </div>
+                <span className="text-sm text-fair-text/60">{formatDateLong(event.event_date)}</span>
               </div>
-              <span className="text-sm text-fair-text/60">May 15, 2026</span>
-            </div>
-            <div className="flex items-center justify-between py-6 border-b border-fair-ghost/50">
-              <div className="flex items-center">
-                <span className="bg-fair-brand text-white uppercase font-bold text-xs px-3 py-1 mr-6">TALK</span>
-                <h3 className="text-xl font-bold tracking-tighter">RAG Systems at Scale</h3>
-              </div>
-              <span className="text-sm text-fair-text/60">May 04, 2026</span>
-            </div>
-            <div className="flex items-center justify-between py-6 border-b border-fair-ghost/50">
-              <div className="flex items-center">
-                <span className="bg-fair-brand text-white uppercase font-bold text-xs px-3 py-1 mr-6">TALK</span>
-                <h3 className="text-xl font-bold tracking-tighter">LLM Inference Optimization</h3>
-              </div>
-              <span className="text-sm text-fair-text/60">Apr 19, 2026</span>
-            </div>
+            ))}
           </div>
         </div>
       </section>

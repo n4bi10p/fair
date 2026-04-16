@@ -1,4 +1,15 @@
-export default function BlogPage() {
+import Link from 'next/link'
+
+import { getPublishedBlogPosts } from '@/lib/content'
+import { formatDateLong } from '@/lib/utils'
+
+export const dynamic = 'force-dynamic'
+
+export default async function BlogPage() {
+  const posts = await getPublishedBlogPosts()
+  const featuredPost = posts[0]
+  const remainingPosts = posts.slice(1)
+
   return (
     <>
       <section className="py-24">
@@ -12,24 +23,26 @@ export default function BlogPage() {
 
       <section className="pb-24">
         <div className="max-w-7xl mx-auto px-12">
-          <a href="/blog/fine-tuning-small-language-models" className="block bg-fair-dark text-white p-12 md:p-20 grid md:grid-cols-2 gap-12 items-center hover:bg-fair-brand">
-            <div>
-              <p className="text-sm uppercase font-bold tracking-wider text-white/70">FEATURED POST</p>
-              <h2 className="mt-4 text-4xl md:text-6xl font-black tracking-tighter">The State of AI in Pune</h2>
-            </div>
-            <div className="text-white/80">
-              <p className="text-lg" style={{ lineHeight: 1.8 }}>
-                An in-depth look at the talent, research, and startup ecosystem for Artificial Intelligence in Pune, and where it's headed next.
-              </p>
-              <div className="mt-8 flex items-center">
-                <img src="https://placehold.co/50x50/E8E6E1/2E2E2E?text=A" alt="Author" className="w-12 h-12 object-cover filter grayscale" />
-                <div className="ml-4">
-                  <p className="font-bold">Arjun M.</p>
-                  <p className="text-sm text-white/70">Apr 10, 2026</p>
+          {featuredPost ? (
+            <Link href={`/blog/${featuredPost.slug}`} className="block bg-fair-dark text-white p-12 md:p-20 grid md:grid-cols-2 gap-12 items-center hover:bg-fair-brand">
+              <div>
+                <p className="text-sm uppercase font-bold tracking-wider text-white/70">Featured Post</p>
+                <h2 className="mt-4 text-4xl md:text-6xl font-black tracking-tighter">{featuredPost.title}</h2>
+              </div>
+              <div className="text-white/80">
+                <p className="text-lg" style={{ lineHeight: 1.8 }}>
+                  {featuredPost.excerpt ?? 'Latest writing from FAIR.'}
+                </p>
+                <div className="mt-8 flex items-center">
+                  <img src="https://placehold.co/50x50/E8E6E1/2E2E2E?text=A" alt="Author" className="w-12 h-12 object-cover filter grayscale" />
+                  <div className="ml-4">
+                    <p className="font-bold">{featuredPost.author_name ?? 'FAIR'}</p>
+                    <p className="text-sm text-white/70">{featuredPost.published_at ? formatDateLong(featuredPost.published_at) : 'Draft'}</p>
+                  </div>
                 </div>
               </div>
-            </div>
-          </a>
+            </Link>
+          ) : null}
         </div>
       </section>
 
@@ -38,34 +51,28 @@ export default function BlogPage() {
           <div className="md:col-span-8">
             <p className="text-xs uppercase font-bold tracking-wider text-fair-brand mb-8 text-[11px]">WRITINGS</p>
             <div className="space-y-8">
-              <a href="/blog/fine-tuning-small-language-models" className="block border-b border-fair-ghost/50 pb-8 group">
-                <div className="flex items-center text-sm text-fair-text/70 mb-2">
-                  <span>Arjun M.</span>
-                  <span className="mx-2">/</span>
-                  <span>Apr 10, 2026</span>
-                </div>
-                <h3 className="text-3xl font-bold tracking-tighter group-hover:text-fair-brand">Fine-tuning Small Language Models</h3>
-                <p className="mt-2 text-fair-text/80" style={{ lineHeight: 1.8 }}>
-                  A practical guide to fine-tuning models like Llama 3 8B and Phi-3 on a single consumer GPU, from dataset preparation to deployment.
-                </p>
-                <div className="mt-4">
-                  <span className="bg-fair-surface text-fair-text uppercase font-bold text-xs px-3 py-1">TUTORIAL</span>
-                </div>
-              </a>
-              <a href="/blog/notes-from-the-paper-reading-circle" className="block border-b border-fair-ghost/50 pb-8 group">
-                <div className="flex items-center text-sm text-fair-text/70 mb-2">
-                  <span>Sana K.</span>
-                  <span className="mx-2">/</span>
-                  <span>Mar 28, 2026</span>
-                </div>
-                <h3 className="text-3xl font-bold tracking-tighter group-hover:text-fair-brand">Notes from the Paper Reading Circle</h3>
-                <p className="mt-2 text-fair-text/80" style={{ lineHeight: 1.8 }}>
-                  Key takeaways and discussions from our recent session on "Leave No Context Behind: Efficient Infinite Context LLMs with Infini-attention".
-                </p>
-                <div className="mt-4">
-                  <span className="bg-fair-surface text-fair-text uppercase font-bold text-xs px-3 py-1">RECAP</span>
-                </div>
-              </a>
+              {remainingPosts.map((post) => (
+                <Link key={post.id} href={`/blog/${post.slug}`} className="block border-b border-fair-ghost/50 pb-8 group">
+                  <div className="flex items-center text-sm text-fair-text/70 mb-2">
+                    <span>{post.author_name ?? 'FAIR'}</span>
+                    <span className="mx-2">/</span>
+                    <span>{post.published_at ? formatDateLong(post.published_at) : 'Draft'}</span>
+                  </div>
+                  <h3 className="text-3xl font-bold tracking-tighter group-hover:text-fair-brand">{post.title}</h3>
+                  {post.excerpt ? (
+                    <p className="mt-2 text-fair-text/80" style={{ lineHeight: 1.8 }}>
+                      {post.excerpt}
+                    </p>
+                  ) : null}
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {(post.tags ?? []).map((tag) => (
+                      <span key={tag} className="bg-fair-surface text-fair-text uppercase font-bold text-xs px-3 py-1">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </Link>
+              ))}
             </div>
           </div>
           <div className="md:col-span-4">

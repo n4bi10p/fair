@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation'
 
 export default function Navbar() {
   const pathname = usePathname()
+  const isAboutActive = pathname === '/'
 
   const navClass = (path: string) => {
     if (pathname === path) {
@@ -12,6 +13,10 @@ export default function Navbar() {
     }
     return 'text-fair-text font-medium hover:bg-fair-dark hover:text-white px-2 py-1 transition-none'
   }
+
+  const aboutClass = isAboutActive
+    ? 'bg-fair-dark text-white font-medium px-2 py-1 transition-none'
+    : 'text-fair-text font-medium hover:bg-fair-dark hover:text-white px-2 py-1 transition-none'
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-fair-background border-b border-fair-ghost">
@@ -21,7 +26,7 @@ export default function Navbar() {
             FA\R
           </Link>
           <nav className="hidden md:flex items-center space-x-10">
-            <Link href="/#about" className="text-fair-text font-medium hover:bg-fair-dark hover:text-white px-2 py-1 transition-none">
+            <Link href="/#about" className={aboutClass}>
               About
             </Link>
             <Link href="/events" className={navClass('/events')}>

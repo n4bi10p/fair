@@ -1,6 +1,14 @@
 import Link from "next/link";
 
-export default function Home() {
+import { getLatestPublishedBlogPosts, getLatestPublishedEvents } from '@/lib/content'
+import { formatDateShort } from '@/lib/utils'
+
+export const dynamic = 'force-dynamic'
+
+export default async function Home() {
+  const events = await getLatestPublishedEvents(4)
+  const posts = await getLatestPublishedBlogPosts(3)
+
   return (
     <>
       <header className="pt-[160px] pb-[120px] px-12 max-w-[1440px] mx-auto">
@@ -73,38 +81,16 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-12">
           <h2 className="text-5xl font-black tracking-tighter">What's happening</h2>
           <div className="mt-12 grid md:grid-cols-2 gap-8">
-            <div className="bg-[#3A3C37] p-8 flex flex-col justify-between hover:bg-fair-brand">
-              <div>
-                <p className="text-sm uppercase font-bold tracking-wider text-fair-ghost">APR 19</p>
-                <h3 className="mt-4 text-3xl font-bold tracking-tighter">LLM Inference Optimization</h3>
-                <p className="mt-2 text-fair-ghost">Deep dive into vLLM and TensorRT-LLM architecture.</p>
+            {events.map((event) => (
+              <div key={event.id} className="bg-[#3A3C37] p-8 flex flex-col justify-between hover:bg-fair-brand">
+                <div>
+                  <p className="text-sm uppercase font-bold tracking-wider text-fair-ghost">{formatDateShort(event.event_date)}</p>
+                  <h3 className="mt-4 text-3xl font-bold tracking-tighter">{event.title}</h3>
+                  {event.description ? <p className="mt-2 text-fair-ghost">{event.description}</p> : null}
+                </div>
+                <Link href={`/events/${event.slug}`} className="mt-8 text-sm uppercase font-bold tracking-wider self-start">View Event →</Link>
               </div>
-              <a href="#" className="mt-8 text-sm uppercase font-bold tracking-wider self-start">RSVP →</a>
-            </div>
-            <div className="bg-[#3A3C37] p-8 flex flex-col justify-between hover:bg-fair-brand">
-              <div>
-                <p className="text-sm uppercase font-bold tracking-wider text-fair-ghost">MAY 04</p>
-                <h3 className="mt-4 text-3xl font-bold tracking-tighter">RAG Systems at Scale</h3>
-                <p className="mt-2 text-fair-ghost">Architecting vector databases for millions of documents.</p>
-              </div>
-              <a href="#" className="mt-8 text-sm uppercase font-bold tracking-wider self-start">RSVP →</a>
-            </div>
-            <div className="bg-[#3A3C37] p-8 flex flex-col justify-between hover:bg-fair-brand">
-              <div>
-                <p className="text-sm uppercase font-bold tracking-wider text-fair-ghost">MAY 15</p>
-                <h3 className="mt-4 text-3xl font-bold tracking-tighter">Diffusion Model Workshop</h3>
-                <p className="mt-2 text-fair-ghost">Practical fine-tuning with LoRA and ControlNet.</p>
-              </div>
-              <a href="#" className="mt-8 text-sm uppercase font-bold tracking-wider self-start">RSVP →</a>
-            </div>
-            <div className="bg-[#3A3C37] p-8 flex flex-col justify-between hover:bg-fair-brand">
-              <div>
-                <p className="text-sm uppercase font-bold tracking-wider text-fair-ghost">JUN 03</p>
-                <h3 className="mt-4 text-3xl font-bold tracking-tighter">Paper Circle: Sora</h3>
-                <p className="mt-2 text-fair-ghost">Analyzing Video Generation as World Simulators.</p>
-              </div>
-              <a href="#" className="mt-8 text-sm uppercase font-bold tracking-wider self-start">RSVP →</a>
-            </div>
+            ))}
           </div>
         </div>
       </section>
@@ -182,27 +168,15 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-12">
           <h2 className="text-5xl font-black tracking-tighter mb-12">From the community</h2>
           <div className="space-y-8">
-            <Link href="/blog/the-state-of-ai-in-pune" className="flex items-center justify-between py-8 border-b border-fair-ghost group">
-              <div className="flex items-center">
-                <span className="text-sm font-mono text-fair-ghost mr-8">01</span>
-                <h3 className="text-3xl font-bold tracking-tighter group-hover:text-fair-brand">The State of AI in Pune</h3>
-              </div>
-              <span className="material-symbols-outlined text-3xl text-fair-text group-hover:text-fair-brand">arrow_forward</span>
-            </Link>
-            <Link href="/blog/fine-tuning-small-language-models" className="flex items-center justify-between py-8 border-b border-fair-ghost group">
-              <div className="flex items-center">
-                <span className="text-sm font-mono text-fair-ghost mr-8">02</span>
-                <h3 className="text-3xl font-bold tracking-tighter group-hover:text-fair-brand">Fine-tuning Small Language Models</h3>
-              </div>
-              <span className="material-symbols-outlined text-3xl text-fair-text group-hover:text-fair-brand">arrow_forward</span>
-            </Link>
-            <Link href="/blog/notes-from-the-paper-reading-circle" className="flex items-center justify-between py-8 border-b border-fair-ghost group">
-              <div className="flex items-center">
-                <span className="text-sm font-mono text-fair-ghost mr-8">03</span>
-                <h3 className="text-3xl font-bold tracking-tighter group-hover:text-fair-brand">Notes from the Paper Reading Circle</h3>
-              </div>
-              <span className="material-symbols-outlined text-3xl text-fair-text group-hover:text-fair-brand">arrow_forward</span>
-            </Link>
+            {posts.map((post, index) => (
+              <Link key={post.id} href={`/blog/${post.slug}`} className="flex items-center justify-between py-8 border-b border-fair-ghost group">
+                <div className="flex items-center">
+                  <span className="text-sm font-mono text-fair-ghost mr-8">{String(index + 1).padStart(2, '0')}</span>
+                  <h3 className="text-3xl font-bold tracking-tighter group-hover:text-fair-brand">{post.title}</h3>
+                </div>
+                <span className="material-symbols-outlined text-3xl text-fair-text group-hover:text-fair-brand">arrow_forward</span>
+              </Link>
+            ))}
           </div>
         </div>
       </section>

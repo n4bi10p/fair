@@ -83,3 +83,43 @@ a {
 .form-input::placeholder {
   color: #c6c7c0;
 }
+
+.prose {
+  color: #2e2e2e;
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4 {
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  color: #2e2e2e;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.prose p,
+.prose li {
+  line-height: 1.8;
+}
+
+.prose pre {
+  background: #2e2e2e;
+  color: #fafafa;
+  border: 1px solid #3a3c37;
+  padding: 1rem;
+  overflow-x: auto;
+}
+
+.prose code {
+  background: #e8e6e1;
+  color: #2e2e2e;
+  padding: 0.1rem 0.3rem;
+}
+
+.prose pre code {
+  background: transparent;
+  color: inherit;
+  padding: 0;
+}
