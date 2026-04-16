@@ -26,14 +26,14 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   return (
     <>
-      <section className="py-24">
-        <div className="max-w-4xl mx-auto px-12">
+      <section className="py-16 md:py-24">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-12">
           <div className="text-sm mb-4">
             <Link href="/blog" className="hover:text-fair-brand">Blog</Link>
             <span className="mx-2 text-fair-ghost">/</span>
             <span className="text-fair-text/70">{post.tags?.[0] ?? 'Community'}</span>
           </div>
-          <h1 className="text-6xl font-black tracking-tighter">{post.title}</h1>
+          <h1 className="text-4xl md:text-6xl font-black tracking-tighter">{post.title}</h1>
           <div className="mt-8 flex items-center">
             <img src="https://placehold.co/50x50/E8E6E1/2E2E2E?text=A" alt="Author" className="w-12 h-12 object-cover filter grayscale" />
             <div className="ml-4">
@@ -45,7 +45,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       </section>
 
       <article className="pb-24">
-        <div className="max-w-7xl mx-auto px-12 grid md:grid-cols-12 gap-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 grid md:grid-cols-12 gap-12 md:gap-16">
           <div className="md:col-start-4 md:col-span-7">
             <div className="max-w-none leading-[1.8] space-y-6">
               <ReactMarkdown rehypePlugins={[rehypeHighlight]}>{post.body ?? ''}</ReactMarkdown>
@@ -63,7 +63,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       </article>
 
       <section className="py-12 bg-fair-surface">
-        <div className="max-w-7xl mx-auto px-12 flex justify-between">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 flex flex-col md:flex-row gap-8 md:gap-0 md:justify-between">
           <Link href={relatedPosts[0] ? `/blog/${relatedPosts[0].slug}` : '/blog'} className="flex items-center group">
             <span className="material-symbols-outlined text-3xl mr-4">arrow_back</span>
             <div>
@@ -71,7 +71,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               <p className="text-lg font-bold group-hover:text-fair-brand">{relatedPosts[0]?.title ?? 'Back to Blog'}</p>
             </div>
           </Link>
-          <Link href={relatedPosts[1] ? `/blog/${relatedPosts[1].slug}` : '/blog'} className="flex items-center text-right group">
+          <Link href={relatedPosts[1] ? `/blog/${relatedPosts[1].slug}` : '/blog'} className="flex items-center text-left md:text-right group md:self-auto self-start">
             <div>
               <p className="text-sm uppercase tracking-wider text-fair-text/70">Next Post</p>
               <p className="text-lg font-bold group-hover:text-fair-brand">{relatedPosts[1]?.title ?? 'Explore Blog'}</p>

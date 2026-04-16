@@ -1,20 +1,20 @@
 export default function PeoplePage() {
   return (
     <>
-      <section className="py-24">
-        <div className="max-w-7xl mx-auto px-12 text-center">
-          <h1 className="text-6xl font-black tracking-tighter">The minds behind FAIR.</h1>
+      <section className="py-16 md:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 text-center">
+          <h1 className="text-4xl md:text-6xl font-black tracking-tighter">The minds behind FAIR.</h1>
           <p className="mt-4 text-lg max-w-3xl mx-auto text-fair-text/80" style={{ lineHeight: 1.8 }}>
             FAIR is run by a core team of builders and researchers, but the community is the engine.
           </p>
         </div>
       </section>
 
-      <section className="pb-24">
-        <div className="max-w-7xl mx-auto px-12">
+      <section className="pb-16 md:pb-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
           <div className="text-left mb-12">
             <p className="text-xs uppercase font-bold tracking-wider text-fair-brand text-[11px]">CORE TEAM</p>
-            <h2 className="text-4xl font-black tracking-tighter mt-2">Who runs FAIR</h2>
+            <h2 className="text-3xl md:text-4xl font-black tracking-tighter mt-2">Who runs FAIR</h2>
           </div>
           <div className="grid md:grid-cols-2 gap-8 max-w-3xl">
             <div className="text-center">
@@ -51,11 +51,11 @@ export default function PeoplePage() {
         </div>
       </section>
 
-      <section className="py-24 bg-fair-surface">
-        <div className="max-w-7xl mx-auto px-12">
+      <section className="py-16 md:py-24 bg-fair-surface">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
           <div className="text-left mb-12">
             <p className="text-xs uppercase font-bold tracking-wider text-fair-brand text-[11px]">THE COMMUNITY</p>
-            <h2 className="text-4xl font-black tracking-tighter mt-2">2 builders & researchers</h2>
+            <h2 className="text-3xl md:text-4xl font-black tracking-tighter mt-2">2 builders & researchers</h2>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
             <img src="https://placehold.co/100x100/2E2E2E/FAFAFA?text=Talib" alt="Talib Sayyed" className="w-full h-auto object-cover filter grayscale hover:grayscale-0" />
@@ -68,8 +68,8 @@ export default function PeoplePage() {
         </div>
       </section>
 
-      <section className="py-24 bg-fair-dark text-white">
-        <div className="max-w-4xl mx-auto px-12 text-center">
+      <section className="py-16 md:py-24 bg-fair-dark text-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-12 text-center">
           <p className="text-3xl md:text-4xl font-medium tracking-tight" style={{ lineHeight: 1.6 }}>
             "FAIR is the signal in a sea of noise. It's the only place in Pune where I can have a real, technical conversation about what's happening at the edge of AI."
           </p>

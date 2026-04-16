@@ -20,12 +20,12 @@ export default function Navbar() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-fair-background border-b border-fair-ghost">
-      <div className="max-w-[1440px] mx-auto px-12">
-        <div className="flex justify-between items-center py-6">
-          <Link href="/" className="font-black text-2xl tracking-tighter text-fair-text">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-12">
+        <div className="flex justify-between items-center py-4 md:py-6 gap-3">
+          <Link href="/" className="font-black text-xl md:text-2xl tracking-tighter text-fair-text shrink-0">
             FA\R
           </Link>
-          <nav className="hidden md:flex items-center space-x-10">
+          <nav className="flex-1 min-w-0 flex items-center gap-4 md:gap-8 overflow-x-auto whitespace-nowrap hide-scrollbar text-sm md:text-base">
             <Link href="/#about" className={aboutClass}>
               About
             </Link>
@@ -42,8 +42,8 @@ export default function Navbar() {
               Apply
             </Link>
           </nav>
-          <div>
-            <Link href="/apply" className="bg-fair-brand text-white uppercase font-bold text-sm px-6 py-3 hover:bg-fair-dark transition-none">
+          <div className="shrink-0">
+            <Link href="/apply" className="bg-fair-brand text-white uppercase font-bold text-xs md:text-sm px-4 md:px-6 py-2.5 md:py-3 whitespace-nowrap hover:bg-fair-dark transition-none">
               Join Community
             </Link>
           </div>

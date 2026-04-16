@@ -12,17 +12,17 @@ export default async function BlogPage() {
 
   return (
     <>
-      <section className="py-24">
-        <div className="max-w-7xl mx-auto px-12 text-center">
-          <h1 className="text-6xl font-black tracking-tighter">From the community.</h1>
+      <section className="py-16 md:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 text-center">
+          <h1 className="text-4xl md:text-6xl font-black tracking-tighter">From the community.</h1>
           <p className="mt-4 text-lg max-w-3xl mx-auto text-fair-text/80" style={{ lineHeight: 1.8 }}>
             Learnings, notes, and musings from FAIR members.
           </p>
         </div>
       </section>
 
-      <section className="pb-24">
-        <div className="max-w-7xl mx-auto px-12">
+      <section className="pb-16 md:pb-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
           {featuredPost ? (
             <Link href={`/blog/${featuredPost.slug}`} className="block bg-fair-dark text-white p-12 md:p-20 grid md:grid-cols-2 gap-12 items-center hover:bg-fair-brand">
               <div>
@@ -46,8 +46,8 @@ export default async function BlogPage() {
         </div>
       </section>
 
-      <section className="pb-24">
-        <div className="max-w-7xl mx-auto px-12 grid md:grid-cols-12 gap-16">
+      <section className="pb-16 md:pb-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 grid md:grid-cols-12 gap-12 md:gap-16">
           <div className="md:col-span-8">
             <p className="text-xs uppercase font-bold tracking-wider text-fair-brand mb-8 text-[11px]">WRITINGS</p>
             <div className="space-y-8">
@@ -58,7 +58,7 @@ export default async function BlogPage() {
                     <span className="mx-2">/</span>
                     <span>{post.published_at ? formatDateLong(post.published_at) : 'Draft'}</span>
                   </div>
-                  <h3 className="text-3xl font-bold tracking-tighter group-hover:text-fair-brand">{post.title}</h3>
+                  <h3 className="text-2xl md:text-3xl font-bold tracking-tighter group-hover:text-fair-brand">{post.title}</h3>
                   {post.excerpt ? (
                     <p className="mt-2 text-fair-text/80" style={{ lineHeight: 1.8 }}>
                       {post.excerpt}

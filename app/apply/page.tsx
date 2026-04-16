@@ -35,17 +35,17 @@ export default async function ApplyPage({ searchParams }: ApplyPageProps) {
 
   return (
     <>
-      <section className="py-24">
-        <div className="max-w-2xl mx-auto px-12 text-center">
-          <h1 className="text-6xl font-black tracking-tighter">Join the Community</h1>
+      <section className="py-16 md:py-24">
+        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-12 text-center">
+          <h1 className="text-4xl md:text-6xl font-black tracking-tighter">Join the Community</h1>
           <p className="mt-6 text-lg text-fair-text/80 max-w-xl mx-auto" style={{ lineHeight: 1.8 }}>
             FAIR is a curated community. We're looking for builders, researchers, and thinkers who are passionate about pushing the boundaries of AI. Tell us a bit about yourself.
           </p>
         </div>
       </section>
 
-      <section className="pb-32">
-        <div className="max-w-2xl mx-auto px-12">
+      <section className="pb-20 md:pb-32">
+        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-12">
           {status === 'submitted' ? (
             <p className="mb-8 bg-[#dcefe3] text-[#2d6a4f] px-4 py-3 text-sm font-bold uppercase tracking-[0.05em]">
               Application submitted successfully.
@@ -65,7 +65,7 @@ export default async function ApplyPage({ searchParams }: ApplyPageProps) {
               <div>
                 <input required type="email" name="email" id="email" className="form-input w-full text-lg" placeholder="Email Address" />
               </div>
-              <div className="grid grid-cols-2 gap-x-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-10">
                 <div>
                   <input type="text" name="location" id="location" className="form-input w-full text-lg" placeholder="Location" />
                 </div>
