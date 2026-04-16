@@ -128,37 +128,34 @@ export default async function Home() {
           <div className="text-center mb-12">
             <p className="text-sm uppercase font-bold tracking-wider text-fair-brand">Built by the community, for the community</p>
           </div>
-          <div className="flex overflow-x-auto space-x-8 hide-scrollbar">
+          <div className="flex justify-center gap-8">
             <div className="flex-shrink-0 text-center">
-              <img src="https://placehold.co/150x150/2E2E2E/FAFAFA?text=Arjun" alt="Arjun M." className="w-36 h-36 object-cover filter grayscale hover:grayscale-0" />
-              <p className="mt-4 text-sm font-medium">Arjun M.</p>
+              <div className="relative group">
+                <img src="https://placehold.co/150x150/2E2E2E/FAFAFA?text=Talib" alt="Talib Sayyed" className="w-36 h-36 object-cover filter grayscale hover:grayscale-0" />
+                <a
+                  href="https://www.linkedin.com/in/talibs"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="absolute inset-0 hidden group-hover:flex items-center justify-center bg-fair-dark/70 text-white text-xs uppercase font-bold tracking-[0.05em]"
+                >
+                  LinkedIn
+                </a>
+              </div>
+              <p className="mt-4 text-sm font-medium">Talib Sayyed</p>
             </div>
             <div className="flex-shrink-0 text-center">
-              <img src="https://placehold.co/150x150/2E2E2E/FAFAFA?text=Sana" alt="Sana K." className="w-36 h-36 object-cover filter grayscale hover:grayscale-0" />
-              <p className="mt-4 text-sm font-medium">Sana K.</p>
-            </div>
-            <div className="flex-shrink-0 text-center">
-              <img src="https://placehold.co/150x150/2E2E2E/FAFAFA?text=Vikram" alt="Vikram D." className="w-36 h-36 object-cover filter grayscale hover:grayscale-0" />
-              <p className="mt-4 text-sm font-medium">Vikram D.</p>
-            </div>
-            <div className="flex-shrink-0 text-center">
-              <img src="https://placehold.co/150x150/2E2E2E/FAFAFA?text=Priya" alt="Priya O." className="w-36 h-36 object-cover filter grayscale hover:grayscale-0" />
-              <p className="mt-4 text-sm font-medium">Priya O.</p>
-            </div>
-            <div className="flex-shrink-0 text-center">
-              <img src="https://placehold.co/150x150/2E2E2E/FAFAFA?text=Rohan" alt="Rohan S." className="w-36 h-36 object-cover filter grayscale hover:grayscale-0" />
-              <p className="mt-4 text-sm font-medium">Rohan S.</p>
-            </div>
-            <div className="flex-shrink-0 text-center">
-              <img src="https://placehold.co/150x150/2E2E2E/FAFAFA?text=Ananya" alt="Ananya V." className="w-36 h-36 object-cover filter grayscale hover:grayscale-0" />
-              <p className="mt-4 text-sm font-medium">Ananya V.</p>
-            </div>
-            <div className="flex-shrink-0 text-center">
-              <img src="https://placehold.co/150x150/2E2E2E/FAFAFA?text=Rahul" alt="Rahul T." className="w-36 h-36 object-cover filter grayscale hover:grayscale-0" />
-              <p className="mt-4 text-sm font-medium">Rahul T.</p>
-            </div>
-            <div className="flex-shrink-0 w-36 h-36 bg-fair-brand flex items-center justify-center">
-              <span className="font-black text-white text-3xl tracking-tighter">FA\R</span>
+              <div className="relative group">
+                <img src="https://placehold.co/150x150/2E2E2E/FAFAFA?text=Nabil" alt="Nabil Shaikh" className="w-36 h-36 object-cover filter grayscale hover:grayscale-0" />
+                <a
+                  href="https://www.linkedin.com/in/n4bi10p"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="absolute inset-0 hidden group-hover:flex items-center justify-center bg-fair-dark/70 text-white text-xs uppercase font-bold tracking-[0.05em]"
+                >
+                  LinkedIn
+                </a>
+              </div>
+              <p className="mt-4 text-sm font-medium">Nabil Shaikh</p>
             </div>
           </div>
         </div>
