@@ -19,7 +19,7 @@ export default async function Home() {
               Where Pune&apos;s AI minds meet.
             </h1>
             <p className="text-xl md:text-2xl text-fair-brand max-w-3xl mb-8 md:mb-12 leading-relaxed">
-              FAIR is a collective of AI researchers, engineers, and builders in Pune — building in public, learning together, shipping real work.
+              FAIR is a collective of AI researchers, engineers, and builders in Pune — Trying to create Bangalore's founder culture in Pune.
             </p>
             <div className="flex flex-col sm:flex-row sm:flex-wrap gap-4 items-stretch sm:items-center mb-10 md:mb-16 max-w-xl">
               <Link href="/apply" className="bg-fair-brand text-white px-6 md:px-8 py-4 md:py-5 text-base md:text-lg text-center font-bold uppercase hover:bg-fair-dark transition-none">
@@ -58,7 +58,7 @@ export default async function Home() {
           </div>
           <div className="col-span-12 lg:col-span-7">
             <p className="text-lg md:text-xl leading-relaxed text-fair-brand">
-              FAIR brings together people who are actually building — not just networking. We do paper reading circles, open-source sprints, hackathons, and deep-dives into what&apos;s actually working in AI right now. We believe the future of AI isn&apos;t just in Silicon Valley, but in the hubs like Pune where builders meet.
+              FAIR brings together people who are actually building — not just networking. We do paper reading circles, open-source sprints, hackathons, and deep-dives into what&apos;s actually working in AI right now. We believe the future of AI isn&apos;t just in Silicon Valley, The place where builders connect with Founders.
             </p>
           </div>
         </div>
@@ -132,7 +132,7 @@ export default async function Home() {
           <div className="flex justify-center gap-8">
             <div className="flex-shrink-0 text-center">
               <FounderPhoto
-                imageSrc="https://placehold.co/150x150/2E2E2E/FAFAFA?text=Talib"
+                imageSrc="/founders/talib.jpeg"
                 alt="Talib Sayyed"
                 linkedinUrl="https://www.linkedin.com/in/talibs"
                 imageClassName="w-36 h-36 object-cover filter grayscale hover:grayscale-0"

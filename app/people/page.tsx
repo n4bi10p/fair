@@ -21,7 +21,7 @@ export default function PeoplePage() {
           <div className="grid md:grid-cols-2 gap-8 max-w-3xl">
             <div className="text-center">
               <FounderPhoto
-                imageSrc="https://placehold.co/300x300/2E2E2E/FAFAFA?text=Talib"
+                imageSrc="/founders/talib.jpeg"
                 alt="Talib Sayyed"
                 linkedinUrl="https://www.linkedin.com/in/talibs"
                 imageClassName="w-full object-cover filter grayscale hover:grayscale-0"
@@ -50,7 +50,7 @@ export default function PeoplePage() {
             <h2 className="text-3xl md:text-4xl font-black tracking-tighter mt-2">2 builders & researchers</h2>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-            <img src="https://placehold.co/100x100/2E2E2E/FAFAFA?text=Talib" alt="Talib Sayyed" className="w-full h-auto object-cover filter grayscale hover:grayscale-0" />
+            <img src="/founders/talib.jpeg" alt="Talib Sayyed" className="w-full h-auto object-cover filter grayscale hover:grayscale-0" />
             <img src="/founders/nabil.jpeg" alt="Nabil Shaikh" className="w-full h-auto object-cover filter grayscale hover:grayscale-0" />
             <a href="/apply" className="w-full h-full bg-fair-brand flex flex-col items-center justify-center text-white text-center min-h-[80px]">
               <span className="text-2xl font-black">+</span>
@@ -68,7 +68,7 @@ export default function PeoplePage() {
           <div className="mt-8 flex items-center justify-center">
             <img src="https://placehold.co/50x50/E8E6E1/2E2E2E?text=A" alt="Ananya V." className="w-12 h-12 object-cover filter grayscale" />
             <div className="ml-4 text-left">
-              <p className="font-bold">Ananya V.</p>
+              <p className="font-bold">Madhura Kene</p>
               <p className="text-sm text-white/70">Member since 2025</p>
             </div>
           </div>
